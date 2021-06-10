@@ -33,7 +33,7 @@ public class UserBalanceController {
             @ApiResponse(code = 400, message = "При некорректном запросе"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка")
     })
-    public ResponseEntityDto<PageDto> deals(@RequestParam("page") int page, @RequestParam("length") int length) {
+    public ResponseEntityDto<PageDto> history(@RequestParam("page") int page, @RequestParam("length") int length) {
         PageDto pageDto = userBalanceService.history(page, length);
         return ResponseEntityDto.ok(pageDto);
     }

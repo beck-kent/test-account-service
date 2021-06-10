@@ -13,6 +13,7 @@
 <code>localhost:8087/api/v1/user-balance/saveBalance</code>
 
 <h4>request:</h4>
+
 ``` json
 {
     "user_id": 1,
@@ -35,6 +36,7 @@
 <code>localhost:8087/api/v1/user-balance/saveBalanceKafka</code>
 
 <h4>request:</h4>
+
 ``` json
 {
     "user_id": 1,
@@ -45,6 +47,7 @@
 ```
 
 <h4>response:</h4>
+
 ``` json
 {
     "timestamp": "2021-06-10T11:55:01+03:00",

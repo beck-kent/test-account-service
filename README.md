@@ -1,7 +1,7 @@
 # User-Account Sample Application
 Тестовое задание account-service
 
-<h2>Извлечение и загрузка образов Docker:</h2>
+<h3>Извлечение и загрузка образов Docker:</h3>
 <code>docker-compose up -d</code>
 
 <h2>Список API:</h2>

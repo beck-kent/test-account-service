@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/database_changelog-0.0.1.xml
+  - include:
+      file: db/changelog/changes/database_changelog-0.0.2.xml

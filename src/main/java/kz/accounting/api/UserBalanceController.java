@@ -64,14 +64,14 @@ public class UserBalanceController {
         return ResponseEntityDto.ok();
     }
 
-    @GetMapping("/{user_id}")
+    @GetMapping("/{userId}")
     @ApiOperation(value = "Синхронный запрос для получения текущего баланса пользователя")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "При успешном запросе"),
             @ApiResponse(code = 400, message = "При некорректном запросе"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка")
     })
-    public ResponseEntityDto<UserBalanceDto> getUserBalance(@PathVariable("user_id") Long userId) {
+    public ResponseEntityDto<UserBalanceDto> getUserBalance(@PathVariable("userId") Long userId) {
         return ResponseEntityDto.ok(userBalanceService.getUserBalanceDto(userId));
     }
 }

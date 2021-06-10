@@ -13,43 +13,43 @@
 <code>localhost:8087/api/v1/user-balance/saveBalance</code>
 
 <h4>request:</h4>
-<code>
+```javascript
 {
     "user_id": 1,
     "operation_type": "ADD",
     "currency": "USD",
     "amount": 1200
 }
-</code>
+```
 
 <h4>response:</h4>
-<code>
+```javascript
 {
     "timestamp": "2021-06-10T11:55:01+03:00",
     "success": true
 }
-</code>
+```
 
 <h3>PUT: Синхронный запрос для сохранения баланса через кафку</h3>
 <code>localhost:8087/api/v1/user-balance/saveBalanceKafka</code>
 
 <h4>request:</h4>
-<code>
+```javascript
 {
     "user_id": 1,
     "operation_type": "ADD",
     "currency": "USD",
     "amount": 1200
 }
-</code>
+```
 
 <h4>response:</h4>
-<code>
+```javascript
 {
     "timestamp": "2021-06-10T11:55:01+03:00",
     "success": true
 }
-</code>
+```
 
 <h3>GET: Синхронный запрос для получения текущего баланса пользователя</h3>
 <code>localhost:8087/api/v1/user-balance/1</code>

@@ -1,15 +1,17 @@
 package kz.accounting.service.impl;
 
 import kz.accounting.commons.domain.PageDto;
-import kz.accounting.commons.utils.Time;
 import kz.accounting.commons.exception.UserBalanceNotFoundException;
 import kz.accounting.commons.exception.UserNotFoundException;
+import kz.accounting.commons.utils.Time;
 import kz.accounting.jpa.dto.RequestUserBalanceHistoryDto;
+import kz.accounting.jpa.dto.UserBalanceDto;
 import kz.accounting.jpa.dto.UserBalanceHistoryDto;
 import kz.accounting.jpa.entity.UserBalance;
 import kz.accounting.jpa.entity.UserBalanceHistory;
 import kz.accounting.jpa.entity.Users;
 import kz.accounting.jpa.mapper.UserBalanceHistoryMapper;
+import kz.accounting.jpa.mapper.UserBalanceMapper;
 import kz.accounting.jpa.model.Currency;
 import kz.accounting.jpa.repository.UserBalanceHistoryRepository;
 import kz.accounting.jpa.repository.UserBalanceRepository;
@@ -17,10 +19,12 @@ import kz.accounting.jpa.repository.UsersRepository;
 import kz.accounting.service.ConvertService;
 import kz.accounting.service.UserBalanceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +41,11 @@ public class UserBalanceServiceImpl implements UserBalanceService {
     private final UserBalanceRepository userBalanceRepository;
     private final UserBalanceHistoryMapper userBalanceHistoryMapper;
     private final ConvertService convertService;
+    private final UserBalanceMapper userBalanceMapper;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    @Value("${kafka.save-balance-topic}")
+    private String topic;
 
     @Override
     public PageDto history(int page, int length) {
@@ -61,6 +70,17 @@ public class UserBalanceServiceImpl implements UserBalanceService {
                 subtractBalance(userBalance, history.getAmount(), history.getCurrency());
                 break;
         }
+    }
+
+    @Override
+    public void saveBalanceKafka(RequestUserBalanceHistoryDto request) {
+        kafkaTemplate.send(topic, request);
+    }
+
+    @Override
+    public UserBalanceDto getUserBalanceDto(Long userId) {
+        UserBalance userBalance = userBalanceRepository.findByUserId(userId).orElseThrow(() -> new UserBalanceNotFoundException());
+        return userBalanceMapper.userBalanceToUserBalanceDto(userBalance);
     }
 
     private UserBalanceHistory saveBalanceHistory(RequestUserBalanceHistoryDto request) {

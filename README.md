@@ -9,6 +9,42 @@
 <h3>GET: Синхронный запрос для получения истории запросов</h3>
 <code>localhost:8087/api/v1/user-balance/history?page=0&length=10</code>
 
+<h4>response:</h4>
+
+``` json
+{
+    "timestamp": "2021-06-10T14:46:44+03:00",
+    "success": true,
+    "data": {
+        "totalPages": 1,
+        "totalElements": 3,
+        "content": [
+            {
+                "id": 1,
+                "operation_type": "ADD",
+                "amount": 1200,
+                "currency": "USD",
+                "created_at": "2021-06-10T17:46:37+06:00"
+            },
+            {
+                "id": 2,
+                "operation_type": "ADD",
+                "amount": 1200,
+                "currency": "USD",
+                "created_at": "2021-06-10T17:46:38+06:00"
+            },
+            {
+                "id": 3,
+                "operation_type": "SUB",
+                "amount": 1200,
+                "currency": "USD",
+                "created_at": "2021-06-10T17:46:42+06:00"
+            }
+        ]
+    }
+}
+```
+
 <h3>PUT: Синхронный запрос для сохранения баланса</h3>
 <code>localhost:8087/api/v1/user-balance/saveBalance</code>
 
@@ -57,3 +93,17 @@
 
 <h3>GET: Синхронный запрос для получения текущего баланса пользователя</h3>
 <code>localhost:8087/api/v1/user-balance/1</code>
+
+<h4>response:</h4>
+
+``` json
+{
+    "timestamp": "2021-06-10T14:47:47+03:00",
+    "success": true,
+    "data": {
+        "id": 1,
+        "balance_usd": 1200,
+        "updated_at": "2021-06-10T17:46:42+06:00"
+    }
+}
+```

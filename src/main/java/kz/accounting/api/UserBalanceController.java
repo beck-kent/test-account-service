@@ -29,7 +29,7 @@ public class UserBalanceController {
     private final UserBalanceService userBalanceService;
 
     @GetMapping("/history")
-    @ApiOperation(value = "Синхронный запрос")
+    @ApiOperation(value = "Синхронный запрос для получения истории запросов")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "При успешном запросе"),
             @ApiResponse(code = 400, message = "При некорректном запросе"),
@@ -53,7 +53,7 @@ public class UserBalanceController {
     }
 
     @PutMapping("/saveBalanceKafka")
-    @ApiOperation(value = "Синхронный запрос для сохранения баланса")
+    @ApiOperation(value = "Синхронный запрос для сохранения баланса через кафку")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "При успешном запросе"),
             @ApiResponse(code = 400, message = "При некорректном запросе"),

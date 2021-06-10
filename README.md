@@ -13,7 +13,7 @@
 <code>localhost:8087/api/v1/user-balance/saveBalance</code>
 
 <h4>request:</h4>
-```json
+``` json
 {
     "user_id": 1,
     "operation_type": "ADD",
@@ -23,7 +23,8 @@
 ```
 
 <h4>response:</h4>
-```json
+
+``` json
 {
     "timestamp": "2021-06-10T11:55:01+03:00",
     "success": true
@@ -34,7 +35,7 @@
 <code>localhost:8087/api/v1/user-balance/saveBalanceKafka</code>
 
 <h4>request:</h4>
-```json
+``` json
 {
     "user_id": 1,
     "operation_type": "ADD",
@@ -44,7 +45,7 @@
 ```
 
 <h4>response:</h4>
-```json
+``` json
 {
     "timestamp": "2021-06-10T11:55:01+03:00",
     "success": true

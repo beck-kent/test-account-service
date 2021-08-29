@@ -40,6 +40,4 @@ public class UserBalanceHistory extends BaseEntity {
     @Column(nullable = false)
     private Currency currency;
 
-    @Column(name = "created_at", columnDefinition = "timestamp with time zone")
-    private OffsetDateTime createdAt;
 }

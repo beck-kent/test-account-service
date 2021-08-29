@@ -1,17 +1,15 @@
 package kz.accounting.service.impl;
 
 import kz.accounting.commons.domain.PageDto;
+import kz.accounting.commons.utils.Time;
 import kz.accounting.commons.exception.UserBalanceNotFoundException;
 import kz.accounting.commons.exception.UserNotFoundException;
-import kz.accounting.commons.utils.Time;
 import kz.accounting.jpa.dto.RequestUserBalanceHistoryDto;
-import kz.accounting.jpa.dto.UserBalanceDto;
 import kz.accounting.jpa.dto.UserBalanceHistoryDto;
 import kz.accounting.jpa.entity.UserBalance;
 import kz.accounting.jpa.entity.UserBalanceHistory;
 import kz.accounting.jpa.entity.Users;
 import kz.accounting.jpa.mapper.UserBalanceHistoryMapper;
-import kz.accounting.jpa.mapper.UserBalanceMapper;
 import kz.accounting.jpa.model.Currency;
 import kz.accounting.jpa.repository.UserBalanceHistoryRepository;
 import kz.accounting.jpa.repository.UserBalanceRepository;
@@ -30,19 +28,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Transactional
 @RequiredArgsConstructor
 @Service
 public class UserBalanceServiceImpl implements UserBalanceService {
 
+    private final KafkaTemplate<Object, Object> kafkaTemplate;
     private final UsersRepository usersRepository;
     private final UserBalanceHistoryRepository userBalanceHistoryRepository;
     private final UserBalanceRepository userBalanceRepository;
     private final UserBalanceHistoryMapper userBalanceHistoryMapper;
     private final ConvertService convertService;
-    private final UserBalanceMapper userBalanceMapper;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Value("${kafka.save-balance-topic}")
     private String topic;
@@ -77,12 +75,6 @@ public class UserBalanceServiceImpl implements UserBalanceService {
         kafkaTemplate.send(topic, request);
     }
 
-    @Override
-    public UserBalanceDto getUserBalanceDto(Long userId) {
-        UserBalance userBalance = userBalanceRepository.findByUserId(userId).orElseThrow(() -> new UserBalanceNotFoundException());
-        return userBalanceMapper.userBalanceToUserBalanceDto(userBalance);
-    }
-
     private UserBalanceHistory saveBalanceHistory(RequestUserBalanceHistoryDto request) {
         return userBalanceHistoryRepository.save(UserBalanceHistory.builder()
                 .userId(request.getUserId())
@@ -106,7 +98,6 @@ public class UserBalanceServiceImpl implements UserBalanceService {
                 break;
         }
 
-        userBalance.setUpdatedAt(Time.currentOffsetDateTime());
         userBalanceRepository.save(userBalance);
     }
 
@@ -123,7 +114,6 @@ public class UserBalanceServiceImpl implements UserBalanceService {
                 break;
         }
 
-        userBalance.setUpdatedAt(Time.currentOffsetDateTime());
         userBalanceRepository.save(userBalance);
     }
 

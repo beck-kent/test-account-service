@@ -5,7 +5,8 @@ CREATE TABLE user_balance_history
     operation_type    VARCHAR(15) NOT NULL,
     amount            NUMERIC     NOT NULL,
     currency          VARCHAR(3)  NOT NULL,
-    created_at        TIMESTAMP WITH TIME ZONE NOT NULL
+    created_at        TIMESTAMP WITH TIME ZONE NOT NULL,
+    updated_at  TIMESTAMP WITH TIME ZONE
 );
 
 COMMENT ON TABLE user_balance_history IS 'Таблица user_balance_history лог операций над балансом пользователя';

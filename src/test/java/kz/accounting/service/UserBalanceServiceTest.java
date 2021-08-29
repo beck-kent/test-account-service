@@ -37,7 +37,7 @@ public class UserBalanceServiceTest {
     private UserBalanceRepository userBalanceRepository;
 
     @Autowired
-    public KafkaTemplate<String, Object> kafkaTemplate;
+    public KafkaTemplate<Object, Object> kafkaTemplate;
 
     @Autowired
     private KafkaListenerEndpointRegistry registry;

@@ -2,7 +2,9 @@ CREATE TABLE users
 (
     id       BIGSERIAL NOT NULL CONSTRAINT users_pk PRIMARY KEY,
     login    VARCHAR(50),
-    password VARCHAR(500)
+    password VARCHAR(500),
+    created_at  TIMESTAMP WITH TIME ZONE NOT NULL,
+    updated_at  TIMESTAMP WITH TIME ZONE
 );
 
 COMMENT ON TABLE users IS 'Таблица пользователей';

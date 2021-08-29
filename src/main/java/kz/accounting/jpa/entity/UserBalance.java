@@ -11,7 +11,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "user_balance", schema = "user_data")
@@ -27,7 +26,4 @@ public class UserBalance extends BaseEntity {
 
     @Column(name = "balance_usd", nullable = false)
     private BigDecimal balanceUsd;
-
-    @Column(name = "updated_at", columnDefinition = "timestamp with time zone")
-    private OffsetDateTime updatedAt;
 }

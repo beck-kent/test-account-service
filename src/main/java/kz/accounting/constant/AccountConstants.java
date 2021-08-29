@@ -8,7 +8,7 @@ public class AccountConstants {
 
     public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
-    public static final ZoneOffset TIME_ZONE = ZoneOffset.of("+03:00");
+    public static final ZoneOffset TIME_ZONE = ZoneOffset.of("+06:00");
 
     public static final TimeZone REAL_TIME_ZONE = TimeZone.getTimeZone("UTC");
 }

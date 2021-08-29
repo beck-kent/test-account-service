@@ -21,6 +21,7 @@ spring:
 
   liquibase:
     default-schema: user_data
+    drop-first: true
 
   kafka:
     consumer:

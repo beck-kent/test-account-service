@@ -21,6 +21,4 @@ public class UserBalanceHistoryDto extends BaseDto {
     @JsonProperty("currency")
     private Currency currency;
 
-    @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
 }

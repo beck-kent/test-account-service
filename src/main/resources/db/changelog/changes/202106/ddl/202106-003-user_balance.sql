@@ -3,7 +3,8 @@ CREATE TABLE user_balance
     id       BIGSERIAL NOT NULL CONSTRAINT user_balance_pk PRIMARY KEY,
     user_id  BIGINT NOT NULL,
     balance_usd NUMERIC NOT NULL DEFAULT 0,
-    updated_at  TIMESTAMP WITH TIME ZONE NOT NULL
+    created_at  TIMESTAMP WITH TIME ZONE NOT NULL,
+    updated_at  TIMESTAMP WITH TIME ZONE
 );
 
 COMMENT ON TABLE user_balance IS 'Текущий баланс пользователя';

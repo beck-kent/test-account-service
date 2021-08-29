@@ -1,6 +1,7 @@
 package kz.accounting.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.MappedSuperclass;
+import java.time.OffsetDateTime;
 
 @SuperBuilder
 @Getter
@@ -19,4 +21,10 @@ import javax.persistence.MappedSuperclass;
 public abstract class BaseDto {
 
     private Long id;
+
+    @JsonProperty("created_at")
+    private OffsetDateTime createdAt;
+
+    @JsonProperty("updated_at")
+    private OffsetDateTime updatedAt;
 }

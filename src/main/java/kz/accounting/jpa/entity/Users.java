@@ -1,6 +1,6 @@
 package kz.accounting.jpa.entity;
 
-import kz.accounting.jpa.model.BaseEntity;
+import kz.accounting.jpa.model.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Users extends BaseEntity {
+public class Users extends AbstractEntity {
 
     @Column(nullable = false)
     private String login;

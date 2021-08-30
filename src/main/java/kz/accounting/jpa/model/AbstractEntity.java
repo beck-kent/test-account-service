@@ -19,7 +19,7 @@ import java.time.OffsetDateTime;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseEntity {
+public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

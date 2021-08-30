@@ -1,16 +1,15 @@
 package kz.accounting.jpa.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import kz.accounting.jpa.model.BaseDto;
+import kz.accounting.jpa.model.AbstractDto;
 import kz.accounting.jpa.model.Currency;
 import kz.accounting.jpa.enums.OperationType;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 
 @Data
-public class UserBalanceHistoryDto extends BaseDto {
+public class UserBalanceHistoryDto extends AbstractDto {
 
     @JsonProperty("operation_type")
     private OperationType operationType;

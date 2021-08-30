@@ -3,10 +3,11 @@ package kz.accounting.service;
 import kz.accounting.jpa.dto.RequestUserBalanceHistoryDto;
 import kz.accounting.jpa.enums.OperationType;
 import kz.accounting.jpa.model.Currency;
+import kz.accounting.model.AbstractTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -18,9 +19,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@Slf4j
 @AutoConfigureMockMvc(printOnlyOnFailure = false)
-public class UserBalanceControllerTest {
+public class UserBalanceControllerTest extends AbstractTest {
 
     @Autowired
     private MockMvc mockMvc;

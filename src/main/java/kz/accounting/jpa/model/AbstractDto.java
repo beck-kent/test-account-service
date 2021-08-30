@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 @MappedSuperclass
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class BaseDto {
+public abstract class AbstractDto {
 
     private Long id;
 

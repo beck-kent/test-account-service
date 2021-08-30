@@ -4,6 +4,8 @@ import kz.accounting.jpa.dto.RequestUserBalanceHistoryDto;
 import kz.accounting.jpa.enums.OperationType;
 import kz.accounting.jpa.model.Currency;
 import kz.accounting.jpa.repository.UserBalanceRepository;
+import kz.accounting.model.AbstractTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,8 @@ import java.util.concurrent.TimeoutException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
-public class UserBalanceServiceTest {
+@Slf4j
+public class UserBalanceServiceTest extends AbstractTest {
 
     @Value("${kafka.save-balance-topic}")
     private String topic;

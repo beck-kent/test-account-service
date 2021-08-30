@@ -1,6 +1,6 @@
 package kz.accounting.jpa.entity;
 
-import kz.accounting.jpa.model.BaseEntity;
+import kz.accounting.jpa.model.AbstractEntity;
 import kz.accounting.jpa.enums.OperationType;
 import kz.accounting.jpa.model.Currency;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "user_balance_history", schema = "user_data")
@@ -24,7 +23,7 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class UserBalanceHistory extends BaseEntity {
+public class UserBalanceHistory extends AbstractEntity {
 
     @Column(name = "user_id", nullable = false)
     private Long userId;

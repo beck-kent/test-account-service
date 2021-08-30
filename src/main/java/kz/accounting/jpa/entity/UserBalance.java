@@ -1,6 +1,6 @@
 package kz.accounting.jpa.entity;
 
-import kz.accounting.jpa.model.BaseEntity;
+import kz.accounting.jpa.model.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class UserBalance extends BaseEntity {
+public class UserBalance extends AbstractEntity {
 
     @Column(name = "user_id", nullable = false)
     private Long userId;

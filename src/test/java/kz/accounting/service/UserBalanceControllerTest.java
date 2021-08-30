@@ -26,7 +26,7 @@ public class UserBalanceControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testSyncCountersPostMethodWithType_DECREMENT() throws Exception {
+    public void testSaveBalance_ADD() throws Exception {
         RequestUserBalanceHistoryDto request = new RequestUserBalanceHistoryDto();
         request.setUserId(1L);
         request.setOperationType(OperationType.ADD);

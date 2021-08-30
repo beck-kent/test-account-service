@@ -49,8 +49,13 @@ public class UserBalanceServiceImpl implements UserBalanceService {
     public PageDto history(int page, int length) {
         Pageable pageable = PageRequest.of(page, length);
         Page pageEntity = userBalanceHistoryRepository.findAll(pageable);
-        List<UserBalanceHistoryDto> list = userBalanceHistoryMapper.listUserBalanceHistoryToListUserBalanceHistoryDto(pageEntity.getContent());
-        return convertService.getPageDto(pageEntity, list);
+        List list = userBalanceHistoryMapper.listUserBalanceHistoryToListUserBalanceHistoryDto(pageEntity.getContent());
+
+        return PageDto.builder()
+                .totalElements(pageEntity.getTotalElements())
+                .totalPages(pageEntity.getTotalPages())
+                .content(list)
+                .build();
     }
 
     @Override

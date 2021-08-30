@@ -39,7 +39,7 @@ public class UserBalanceController {
         return ResponseEntityDto.ok(pageDto);
     }
 
-    @PutMapping("/saveBalance")
+    @PutMapping("/save/balance")
     @ApiOperation(value = "Синхронный запрос для сохранения баланса")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "При успешном запросе"),
@@ -51,7 +51,7 @@ public class UserBalanceController {
         return ResponseEntityDto.ok();
     }
 
-    @PutMapping("/saveBalanceKafka")
+    @PutMapping("/save/balance/kafka")
     @ApiOperation(value = "Синхронный запрос для сохранения баланса")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "При успешном запросе"),

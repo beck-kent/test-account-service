@@ -11,10 +11,10 @@ import java.util.List;
 public class ConvertServiceImpl implements ConvertService {
 
     @Override
-    public PageDto getPageDto(Page pageEntity, List list) {
+    public PageDto getPageDto(long totalElements, int totalPages, List list) {
         return PageDto.builder()
-                .totalElements(pageEntity.getTotalElements())
-                .totalPages(pageEntity.getTotalPages())
+                .totalElements(totalElements)
+                .totalPages(totalPages)
                 .content(list)
                 .build();
     }

@@ -28,16 +28,33 @@ public class UserBalanceControllerTest extends AbstractTest {
 
     @Test
     public void testSaveBalance_ADD() throws Exception {
+        RequestUserBalanceHistoryDto request = getTestRequestUserBalanceHistoryDto();
+
+        mockMvc.perform(put("/api/v1/user-balance/save/balance")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(getJsonString(request)))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"success\":true")));
+    }
+
+    @Test
+    public void testSaveBalanceKafka_ADD() throws Exception {
+        RequestUserBalanceHistoryDto request = getTestRequestUserBalanceHistoryDto();
+
+        mockMvc.perform(put("/api/v1/user-balance/save/balance/kafka")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(getJsonString(request)))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"success\":true")));
+    }
+
+    private RequestUserBalanceHistoryDto getTestRequestUserBalanceHistoryDto() {
         RequestUserBalanceHistoryDto request = new RequestUserBalanceHistoryDto();
         request.setUserId(1L);
         request.setOperationType(OperationType.ADD);
         request.setCurrency(Currency.USD);
         request.setAmount(BigDecimal.valueOf(100));
 
-        mockMvc.perform(put("/api/v1/user-balance/saveBalance")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(getJsonString(request)))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("\"success\":true")));
+        return request;
     }
 }

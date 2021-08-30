@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ConvertService {
 
-    PageDto getPageDto(Page pageEntity, List list);
+    PageDto getPageDto(long totalElements, int totalPages, List list);
 }

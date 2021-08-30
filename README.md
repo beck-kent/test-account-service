@@ -46,7 +46,7 @@ GET: <code>localhost:8087/api/v1/user-balance/history?page=0&length=10</code>
 ```
 
 <h3>Синхронный запрос для сохранения баланса</h3>
-PUT: <code>localhost:8087/api/v1/user-balance/saveBalance</code>
+PUT: <code>localhost:8087/api/v1/user-balance/save/balance</code>
 
 <h4>request:</h4>
 
@@ -69,7 +69,7 @@ PUT: <code>localhost:8087/api/v1/user-balance/saveBalance</code>
 ```
 
 <h3>Синхронный запрос для сохранения баланса через кафку</h3>
-PUT: <code>localhost:8087/api/v1/user-balance/saveBalanceKafka</code>
+PUT: <code>localhost:8087/api/v1/user-balance/save/balance/kafka</code>
 
 <h4>request:</h4>
 
